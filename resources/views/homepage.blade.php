@@ -16,15 +16,59 @@
 
     <div class="w-100 es_container p-5">
 
-    <ul>
+        <div class="row">
+            <div class="col border g-0 p-1"> <h5>AZIENDA</h5> </div>
+            <div class="col border g-0 p-1"> <h5>STAZIONE DI PARTENZA</h5> </div>
+            <div class="col border g-0 p-1"> <h5>ORARIO DI PARTENZA</h5> </div>
+            <div class="col border g-0 p-1"> <h5>STAZIONE DI ARRIVO</h5> </div>
+            <div class="col border g-0 p-1"> <h5>ORARIO DI ARRIVO</h5> </div>
+            <div class="col border g-0 p-1"> <h5>CODICE TRENO</h5> </div>
+            <div class="col border g-0 p-1"> <h5>N. CARROZZE</h5> </div>
+            <div class="col border g-0 p-1"> <h5>IN ORARIO</h5> </div>
+            <div class="col border g-0 p-1"> <h5>CANCELLATO</h5> </div>
+        </div>
 
-            @foreach($trains as $train)
+        @foreach($trains as $train)
 
-            <li>$train</li>
+        <div class="row">
+            <div class="col border g-0 p-1">{{ $train['azienda']}}</div>
+            <div class="col border g-0 p-1">{{ $train['stazione_partenza']}}</div>
+            <div class="col border g-0 p-1">{{ $train['partenza']}}</div>
+            <div class="col border g-0 p-1">{{ $train['stazione_arrivo']}}</div>
+            <div class="col border g-0 p-1">{{ $train['arrivo']}}</div>
+            <div class="col border g-0 p-1">{{ $train['codice']}}</div>
+            <div class="col border g-0 p-1">{{ $train['carrozze']}}</div>
 
-            @endforeach
+            <div class="col border g-0 p-1
+             @if ($train['in_orario'] == false)
+                d-none
+            @else
+                
+            @endif">No</div>
+            <div class="col border g-0 p-1
+             @if ($train['in_orario'] == true)
+                d-none
+            @else
+                
+            @endif">Sì</div>
 
-    </ul>
+            <div class="col border g-0 p-1
+             @if ($train['cancellato'] == false)
+                d-none
+            @else
+                
+            @endif">No</div>
+            <div class="col border g-0 p-1
+             @if ($train['cancellato'] == true)
+                d-none
+            @else
+                
+            @endif">Sì</div>
+        </div>
+
+        @endforeach
+
+    
 
     </div>
 
