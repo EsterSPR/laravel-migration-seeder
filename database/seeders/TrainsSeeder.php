@@ -17,18 +17,20 @@ class TrainsSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $newTrain = new Train();
+        for($i=0; $i<10; $i++){
+            $newTrain = new Train();
 
-        $newTrain->azienda = $faker->randomElement(['Trenord','Trenitalia','Italo','Frecciarossa','Frecciabianca','Frecciargento']);
-        $newTrain->stazione_partenza = $faker->city();
-        $newTrain->stazione_arrivo = $faker->city();
-        $newTrain->partenza = $faker->time();
-        $newTrain->arrivo = $faker->time();
-        $newTrain->codice = $faker->bothify('??###');
-        $newTrain->carrozze = $faker->randomDigitNotNull();
-        $newTrain->in_orario = $faker->boolean();
-        $newTrain->cancellato = $faker->boolean();
+            $newTrain->azienda = $faker->randomElement(['Trenord','Trenitalia','Italo','Frecciarossa','Frecciabianca','Frecciargento']);
+            $newTrain->stazione_partenza = $faker->city();
+            $newTrain->stazione_arrivo = $faker->city();
+            $newTrain->partenza = $faker->time();
+            $newTrain->arrivo = $faker->time();
+            $newTrain->codice = $faker->bothify('??###');
+            $newTrain->carrozze = $faker->randomDigitNotNull();
+            $newTrain->in_orario = $faker->randomElement(['true','false']);
+            $newTrain->cancellato = $faker->randomElement(['true','false']);
 
-        $newTrain->save();
+            $newTrain->save();
+        }
     }
 }
